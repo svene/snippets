@@ -1,1 +1,3 @@
 link:snippets.adoc[Snippets]
+link:gradle.adoc[Gradle]
+link:groovy.adoc[Groovy]

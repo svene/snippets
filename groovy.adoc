@@ -1,3 +1,5 @@
+link:index.adoc[Index]
+
 == string manipulation
 [source,groovy]
 ----
