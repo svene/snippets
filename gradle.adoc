@@ -1,0 +1,155 @@
+== gradle-std-java
+[source,groovy]
+----
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'maven'
+
+group = 'org.svenehrke.TTT'
+version = '1.0-SNAPSHOT'
+
+
+repositories {
+     mavenCentral()
+}
+dependencies {
+	compile ''
+	testCompile 'junit:junit:4.11'
+}
+
+sourceCompatibility = 1.8
+//targetCompatibility = 1.8
+----
+
+== gradle-std-groovy
+
+[source,groovy]
+----
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'war'
+apply plugin: 'maven'
+
+group = 'org.svenehrke.TTT'
+version = '1.0-SNAPSHOT'
+
+
+repositories {
+     mavenCentral()
+}
+dependencies {
+	compile 'org.codehaus.groovy:groovy-all:2.1.9'
+	testCompile 'org.spockframework:spock-spring:0.7-groovy-2.0'
+}
+
+sourceCompatibility = 1.8
+//targetCompatibility = 1.8
+----
+
+== gradle-jee
+
+[source,groovy]
+----
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'war'
+apply plugin: 'maven'
+
+group = 'org.svenehrke.TTT'
+version = '1.0-SNAPSHOT'
+
+
+repositories {
+     mavenCentral()
+}
+dependencies {
+	compile 'org.codehaus.groovy:groovy-all:2.1.9'
+	providedCompile 'javax:javaee-api:7.0'
+	testCompile 'junit:junit:4.11'
+}
+
+sourceCompatibility = 1.8
+//targetCompatibility = 1.8
+----
+
+== settings.gradle
+(for project name in IDEA title bar)
+
+[source,groovy]
+----
+rootProject.name = 'MyProjectName'
+----
+
+
+== multiproject-gradle
+[source,groovy]
+----
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'groovy'
+	apply plugin: 'war'
+	apply plugin: 'maven'
+
+	group = 'org.open-dolphin'
+	version = '1.0-SNAPSHOT'
+
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		compile 'org.open-dolphin:dolphin-server:0.9'
+		providedCompile 'javax:javaee-api:7.0'
+		testCompile 'junit:junit:4.11'
+	}
+}
+----
+
+== inter project dependencies:
+in build.gradle of one of the subprojects
+
+[source,groovy]
+----
+dependencies {
+	compile project(':opendolphinjee')
+}
+----
+
+== Flatdir repository (Variant 1)
+[source,groovy]
+----
+repositories {
+    mavenCentral()
+    flatDir name: 'localRepository', dirs: '0_localrepository'
+}
+
+dependencies {
+    compile group:'', name: 'coherence', version: ''
+    testCompile 'junit:junit:4.8'
+}
+----
+
+== Flatdir repository (Variant 2)
+[source,groovy]
+----
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile files('0_artifacts/controlsfx-8.0.2-SNAPSHOT.jar')
+}
+----
+
+
+
+== .gitignore
+[source,text]
+----
+out/
+build/
+.gradle/
+.idea/
+*.iml
+classes/
+----
+

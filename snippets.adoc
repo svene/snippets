@@ -1,0 +1,64 @@
+link:index.adoc[Index]
+
+== Java 8: reading a file into a String
+
+[source,java]
+----
+String content = new String(Files.readAllBytes(Paths.get("duke.java")));
+----
+
+
+== Derby on Glassfish
+To work around security issue occuring since Java7u51:
+
+asadmin start-database --dbport 55000
+and
+asadmin stop-database --dbport 55000
+(default port is 1527)
+And then in the glassfish admin console (http://localhost:4848/common/index.jsf) under
+Resources/JDBC/JDBC Connection Pools/Derby Pool  --> Tab 'Additional Properties': change 'PortNumber' to 55000
+
+more radical: in /home/sven/tools/glassfish4/javadb/bin call: startNetworkServer -noSecurityManager
+
+For details see:
+see http://stackoverflow.com/questions/21154400/unable-to-start-derby-database-from-netbeans-7-4
+
+
+== Groovy metaClass per instance/class
+
+http://stackoverflow.com/questions/4781936/dynamically-add-a-property-or-method-to-an-object-in-groovy
+
+
+== Docker
+
+- dockerfile tutorial: https://www.docker.io/learn/dockerfile/level1/
+
+remove images: Try docker rmi <node>. That should work.
+Seeing all created containers is as simple as docker ps -a.
+
+To remove all existing containers (not images!) run:
+- docker rm $(docker ps -a -q)
+or
+- docker rm `docker ps --no-trunc -a -q`
+  - sudo docker rm `sudo docker ps --no-trunc -a -q`
+
+Useful Docker Bash functions and aliases:
+  http://kartar.net/2014/03/some-useful-docker-bash-functions-and-aliases/
+
+== HTML5
+
+=== Divs next to each other
+
+[source,html]
+----
+
+    <div>
+        <div style="display: inline-block">
+            Left
+        </div>
+        <div style="display: inline-block">
+            Right
+        </div>
+    </div>
+
+----

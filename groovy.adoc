@@ -1,0 +1,11 @@
+== string manipulation
+[source,groovy]
+----
+String.metaClass.toCamelCase = {->
+delegate.toLowerCase().split('_')*.capitalize().join('').with {
+take( 1 ).toLowerCase() + drop( 1 )
+}
+}
+----
+
+from 'Making java groovy, pg 207'
