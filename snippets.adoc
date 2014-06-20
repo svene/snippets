@@ -62,3 +62,9 @@ Useful Docker Bash functions and aliases:
     </div>
 
 ----
+
+== Misc
+=== Ubuntu
+- control sound: pavucontrol
+
+

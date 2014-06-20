@@ -155,3 +155,11 @@ build/
 classes/
 ----
 
+==
+gradle gwt plugin
+
+TBD: ...
+open browser at: http://localhost:8080/example-super-dev-mode/
+then press scriplet 'Dev Mode On'
+
+

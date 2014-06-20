@@ -1,0 +1,96 @@
+link:index.adoc[Index]
+
+== Resource created
+
+From Adam Bean, 2nd airhacks Q&A, 24min58
+
+[source,java]
+----
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
+import java.net.URI;
+...
+@POST
+	public Response register(Registration registration, @Context UriInfo uriInfo) {
+		Registration confirmation = null; // = registrations.register(registration);
+		long id = confirmation.getId();
+		URI uri = uriInfo.getAbsolutePathBuilder().path("/" + String.valueOf(id)).build();
+		return Response.created(uri).entity(confirmation).build();
+	}
+...
+//Custom HTTP error handling
+Response.status(Response.Status.CONFLICT).header("x-error-msg", "don't be concurrent");
+----
+
+== Custom HTTP error handling
+
+From Adam Bean, 2nd airhacks Q&A, 24min58
+
+[source,java]
+----
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
+import java.net.URI;
+...
+@POST
+	public Response register(Registration registration, @Context UriInfo uriInfo) {
+		...
+		return Response.status(Response.Status.CONFLICT)
+			.header("x-error-msg", "don't be concurrent");
+	}
+
+----
+
+== Access managed Datasource
+
+From Adam Bean, 2nd airhacks Q&A, 37min00
+
+[source,java]
+----
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
+import java.net.URI;
+
+@Stateless
+public class MyThing {
+	
+	@Resource
+	DataSource ds;
+
+	public Registration register(Registration request) {
+		Connection connection = ds.getConnection();
+		...
+		connection.close();
+	}
+}
+
+
+----
+
+
+
+== beans.xml (JEE7)
+
+[source,xml]
+----
+<beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+		http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
+	   bean-discovery-mode="all"
+>
+</beans>
+----
+
