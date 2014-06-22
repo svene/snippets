@@ -1,0 +1,60 @@
+link:index.adoc[Index]
+
+22.06.2014
+
+=== Parameter Passing
+github/svene/tagui
+[source,java]
+----
+class A {
+	f(p2);
+	f(p1, p2);
+}
+class B {
+	ff(a1, a2) {
+		if (a1 == null) A.f(a1) else A.f(a1, a2)
+	}
+}
+----
+
+but if f(p2) would internally call f(null, p2) then ff could be make like this:
+[source,java]
+----
+class B {
+	ff(a1, a2) {
+		A.f(a1, a2)
+	}
+}
+----
+
+but it is unknown unless one looks at the source code. And anyway needs to be expressed by the contract
+or at least the description of f(p1, p2)
+
+*21.06.2014*
+
+=== JavaFX Parameters
+support provided by _github/svene/open-dolphin-extensions/javafxclient-extension/_:
+
+[source,java]
+----
+public class JavaFXApplicationParameters {
+  public static ClientDolphin clientDolphin;
+}
+----
+and can be used like this:
+
+[source,java]
+----
+// Main.java
+...
+JavaFXApplicationParameters.clientDolphin = dolphinProvider.getClientDolphin();
+...
+----
+
+=== MiniPM
+
+minimalistic PM implementation, modeled after open-dolphin
+
+github/svene/minipm
+
+
