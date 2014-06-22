@@ -1,9 +1,77 @@
 link:index.adoc[Index]
 
-22.06.2014
+*22.06.2014*
+
+=== ImpulseListener
+
+see github/svene/javafx_demos/src/main/java/org/svenehrke/javafxdemos/minipm/Main.java
+
+[source,java]
+----
+BooleanProperty impulse = new SimpleBooleanProperty(false);
+...
+AttributeBinder.bindImpulseListener(impulse, () -> System.out.println("hello world"));
+button.setOnAction(event -> impulse.setValue(true));
+...
+----
+
+[source,java]
+----
+class AttributeBinder {
+public static void bindImpulseListener(BooleanProperty booleanProperty, Runnable runnable) {
+  booleanProperty.addListener((s,o,n) -> {
+    if (!n) return;
+    runnable.run();
+    booleanProperty.setValue(false);
+  });
+}
+----
+
+=== ClientAttributeWrapper
+OpenDolphin's ClientAttributeWrapper extends extends SimpleObjectProperty<Object>
+which means the type of a column of a TableView needs to be defined of type Object:
+
+[source,java]
+----
+...
+private TableColumn<PresentationModel, Object> itemTableColumn() {
+  TableColumn<PresentationModel, Object> result = new TableColumn<>("Description");
+
+  result.setCellValueFactory(param -> {
+    PresentationModel pm = param.getValue();
+      return new ClientAttributeWrapper(
+        pmContext.getAttribute(pm.getId(), PMContext.ATT_DESCRIPTION)
+      );
+    });
+    return result;
+  }
+
+...
+----
+
+
+=== ModelStoreBinder
+github/svene/tagui
+
+Bind ObservableList<PresentationModel> modelstore to open-dolphin model store.
+
+[source,java]
+----
+...
+  ObservableList<PresentationModel> itemPMs = FXCollections.observableArrayList();
+
+  public void initialize() {
+
+    ModelStoreBinder modelStoreBinder = new ModelStoreBinder();
+    modelStoreBinder.bind(itemPMs, PM_TYPE_ITEM);
+    ...
+----
 
 === Parameter Passing
 github/svene/tagui
+
+See ModelStoreBinder.bind(ObservableList<PresentationModel> pms, *String pmType*)
+
 [source,java]
 ----
 class A {
