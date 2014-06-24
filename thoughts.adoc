@@ -1,4 +1,25 @@
 link:index.adoc[Index]
+---
+
+*22.06.2014*
+
+* idea: convert Adam Bien's mvn archetypes into lazybones templates
+
+=== Adam Bien's BCE Maven Archetype
+[source,java]
+----
+mvn archetype:generate -Dfilter=com.airhacks:javaee-bce-archetype
+----
+
+see https://github.com/AdamBien/javaee-bce-archetype
+
+=== Adam Bien's javaee7-essentials-archetype
+[source,java]
+----
+mvn archetype:generate -Dfilter=com.airhacks:javaee7-essentials-archetype
+----
+
+see https://github.com/AdamBien/javaee7-essentials-archetype
 
 *22.06.2014*
 
