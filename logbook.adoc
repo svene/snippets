@@ -1,6 +1,14 @@
 link:index.adoc[Index]
 ---
 
+*27.06.2014*
+
+* converted opendolphin gdt template to lazybones
+
+*26.06.2014*
+
+* converted Adam Bien's mvn archetypes into lazybones templates
+
 *22.06.2014*
 
 * idea: convert Adam Bien's mvn archetypes into lazybones templates
