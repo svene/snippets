@@ -1,6 +1,11 @@
 link:index.adoc[Index]
 ---
 
+*28.06.2014*
+
+* experiments with crash: ~/sweng/crash
+
+* converted opendolphin gdt template to lazybones
 *27.06.2014*
 
 * converted opendolphin gdt template to lazybones
