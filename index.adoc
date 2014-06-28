@@ -2,5 +2,5 @@ link:snippets.adoc[Snippets]
 link:gradle.adoc[Gradle]
 link:groovy.adoc[Groovy]
 link:jee.adoc[JEE]
-link:thoughts.adoc[Thoughts]
+link:logbook.adoc[Logbook]
 
