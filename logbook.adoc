@@ -2,6 +2,10 @@ link:index.adoc[Index]
 
 ---
 
+*3.07.2014*
+
+* switch between source and binary dependencies with gradle: github/svene/module_app
+
 *29.06.2014*
 
 * First SpringIO Demo: github/svene/springio_demo
