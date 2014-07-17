@@ -42,8 +42,47 @@ or
 - docker rm `docker ps --no-trunc -a -q`
   - sudo docker rm `sudo docker ps --no-trunc -a -q`
 
+stop all containers:
+- docker stop $(docker ps -q)
+or:
+- docker ps | sed '1d'|cut -d ' ' -f 1 | xargs docker stop
+
+Example: running fedora interactively
+[source,shell]
+----
+docker run -t -i --rm fedora /bin/bash # <1>
+----
+<1> +-i+: run interactively, +--rm+: remove container automatically after usage
+
 Useful Docker Bash functions and aliases:
   http://kartar.net/2014/03/some-useful-docker-bash-functions-and-aliases/
+
+=== links
+https://gist.github.com/wsargent/7049221
+http://www.infoq.com/articles/docker-containers
+https://www.domenkozar.com/2014/03/11/why-puppet-chef-ansible-arent-good-enough-and-we-can-do-better/
+
+
+
+
+=== docker without sudo
+
+[source,bash]
+----
+# http://www.ludeke.net/2013/12/run-docker-commands-without-sudo.html
+#
+# Add the docker group if it doesn't already exist.
+sudo groupadd docker
+ 
+# Add the connected user "${USERNAME}" to the docker group.
+# Change the user name to match your preferred user.
+# You may have to logout and log back in again for
+# this to take effect.
+sudo gpasswd -a ${USERNAME} docker
+ 
+# Restart the docker daemon.
+sudo service docker restart
+----
 
 == HTML5
 
