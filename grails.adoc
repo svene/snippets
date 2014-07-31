@@ -1,0 +1,6 @@
+link:index.adoc[Index]
+
+== modular grails
+http://gr8crm.github.io/
+https://github.com/goeh
+https://github.com/technipelago

@@ -1,0 +1,15 @@
+link:index.adoc[Index]
+
+== Simple directive producing 'hello'
+
+[source,java]
+----
+app.directive('oda', function() {
+	return {
+		restrict: 'E'
+		,template: '<h1>hallo</h1>'
+		,replace: true
+	}
+})
+----
+
