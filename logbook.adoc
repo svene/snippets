@@ -1,6 +1,43 @@
 link:index.adoc[Index]
 
+= svens logbook
+
 ---
+*28.08.2014*
+
+* Example combining OpenDolphin and http://facebook.github.io/react/index.html[React]: https://github.com/svene/open-dolphin-examples/tree/master/od_reactjs_cso[od_reactjs_cso]
+
+---
+*27.08.2014*
+
+* JavaFX Greet example using SceneBuilder: https://github.com/svene/javafx_demos/tree/master/greet_fxml[Greet FXML]
+
+---
+*26.08.2014*
+
+* Updated https://github.com/canoo/open-dolphin-lazybones-templates[OpenDolphin lazybones templates] 
+* Updated https://github.com/svene/lazybones-templates[JavaEE7 templates] 
+
+---
+
+*20.07.2014*
+queue shell commands http://vicerveza.homeunix.net/~viric/soft/ts/article_linux_com.html
+usage:
+
+[source,shell]
+----
+apt-get install task-spooler
+tsp echo "hello"
+0
+tsp
+0 echo "hello"
+----
+
+
+*18.07.2014*
+
+* HTML imports: http://www.html5rocks.com/en/tutorials/webcomponents/imports/
+* ~/se/sweng/html5/HTMLImports
 
 *3.07.2014*
 

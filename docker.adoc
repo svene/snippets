@@ -1,0 +1,73 @@
+link:index.adoc[Index]
+
+
+== Docker
+
+- dockerfile tutorial: https://www.docker.io/learn/dockerfile/level1/
+
+remove images: Try docker rmi <node>. That should work.
+Seeing all created containers is as simple as docker ps -a.
+
+To remove all existing containers (not images!) run:
+- docker rm $(docker ps -a -q)
+or
+- docker rm `docker ps --no-trunc -a -q`
+  - sudo docker rm `sudo docker ps --no-trunc -a -q`
+
+stop all containers:
+- docker stop $(docker ps -q)
+or:
+- docker ps | sed '1d'|cut -d ' ' -f 1 | xargs docker stop
+
+Example: running fedora interactively
+[source,shell]
+----
+docker run -t -i --rm fedora /bin/bash # <1>
+----
+<1> +-i+: run interactively, +--rm+: remove container automatically after usage
+
+Useful Docker Bash functions and aliases:
+  http://kartar.net/2014/03/some-useful-docker-bash-functions-and-aliases/
+
+=== links
+https://gist.github.com/wsargent/7049221
+http://www.infoq.com/articles/docker-containers
+https://www.domenkozar.com/2014/03/11/why-puppet-chef-ansible-arent-good-enough-and-we-can-do-better/
+
+
+=== docker without sudo
+
+[source,bash]
+----
+# http://www.ludeke.net/2013/12/run-docker-commands-without-sudo.html
+#
+# Add the docker group if it doesn't already exist.
+sudo groupadd docker
+ 
+# Add the connected user "${USERNAME}" to the docker group.
+# Change the user name to match your preferred user.
+# You may have to logout and log back in again for
+# this to take effect.
+sudo gpasswd -a ${USERNAME} docker
+ 
+# Restart the docker daemon.
+sudo service docker restart
+----
+
+=== Vagrant
+
+see video: http://sysadmincasts.com/episodes/31-introduction-to-docker
+
+* download vagrant on Mac and install
+* open terminal in new folder
+* execute +vagrant init phusion/ubuntu-14.04-amd64+ which downloads a docker friendly vagrant box
+* execute +vagrant up+
+* execute +vagrant status+
+* execute +vagrant ssh+
+* execute +sudo su - +
+* execute +lsb_release -r +
+* execute +uname -a +
+* execute +docker +
+* execute +docker run -t -i ubuntu /bin/bash+ which loads ubuntu image from https://registry.hub.docker.com
+
+

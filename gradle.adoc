@@ -78,6 +78,18 @@ sourceCompatibility = 1.8
 //targetCompatibility = 1.8
 ----
 
+== Exclude transitive dependencies
+
+[source,groovy]
+----
+dependencies {
+    compile("org.gradle.test.excludes:api:1.0") {
+        exclude module: 'shared'
+    }
+}
+----
+
+
 == gradle-jee
 
 [source,groovy]
@@ -199,4 +211,8 @@ then press scriplet 'Dev Mode On'
 * http://gesellix.github.io/gradle-summit-2014/?full#provided-jar
 
 
+== plugins
+A Gradle plugin that provides Maven-like dependency management functionality
+https://github.com/spring-gradle-plugins/dependency-management-plugin
+https://github.com/sebersole/gradle-maven-publish-auth
 
